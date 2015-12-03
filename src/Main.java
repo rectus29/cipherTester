@@ -28,6 +28,8 @@ public class Main {
 			String authString = firstResponse.getHeaders("WWW-Authenticate")[0].toString();
 			Pattern r = Pattern.compile("qop=\"(.*?)\"", Pattern.DOTALL);
 			Matcher m = r.matcher(authString);
+
+
 			String qop = null;
 			if (m.find()) {
 				qop = m.group(1);

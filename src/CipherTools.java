@@ -55,8 +55,8 @@ public class CipherTools {
 	 */
 	public Object decrypt(String encrypted, String key) throws Exception {
 		AesCipherService aes = new AesCipherService();
-		aes.setMode(OperationMode.ECB);
-		aes.setPaddingScheme(PaddingScheme.PKCS5);
+        aes.setMode(operationMode);
+        aes.setPaddingScheme(paddingScheme);
 		byte[] plaintextToDecode = new Base64().decode(encrypted);
 		byte[] keyBytes = new Base64().decode(key);
 		ByteSource cipherText = aes.decrypt(plaintextToDecode, keyBytes);
