@@ -32,6 +32,7 @@ public class TDTester {
                     + "firstname=" + RandomStringUtils.randomAlphabetic(10) + "&"
                     + "lastname=" + RandomStringUtils.randomAlphabetic(10) + "&"
                     + "company=" + RandomStringUtils.randomAlphabetic(10) + "&"
+                    + "healthcheck=" + "true" + "&"
                     + "checksum=REZREZREZREZREZREZREZREZ";
 			String out = CipherTools.get().encrypt(fakeParam, key);
             Object ori = CipherTools.get().decrypt(out, key);
