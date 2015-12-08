@@ -1,3 +1,4 @@
+import com.edeal.trackingserver.tools.AESCipherTools;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -5,6 +6,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.shiro.crypto.AesCipherService;
 
 import java.net.URI;
 import java.util.Date;
@@ -35,7 +37,7 @@ public class AES128 {
                         + "lastname=" + RandomStringUtils.randomAlphabetic(10) + "&"
                         + "company=BP2S&"
                         + "checksum=REZREZREZREZREZREZREZREZ";
-                System.out.println(CipherTools.get().encrypt(fakeParam, key));
+                System.out.println(AESCipherTools.get().encrypt(fakeParam, key));
             }
 
             System.out.println("start -> " + start.getTime());

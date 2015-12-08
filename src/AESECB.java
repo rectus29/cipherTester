@@ -1,3 +1,4 @@
+import com.edeal.trackingserver.tools.AESCipherTools;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -31,7 +32,7 @@ public class AESECB {
 					+ "lastname=WEB&"
 					+ "company=WEB&"
 					+ "checksum=WEB";
-			String out = CipherTools.get().encrypt(fakeParam, key);
+			String out = AESCipherTools.get().encrypt(fakeParam, key);
 
 			//first request
 			HttpClient httpClient = HttpClientBuilder.create().build();

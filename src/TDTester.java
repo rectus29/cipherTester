@@ -1,3 +1,4 @@
+import com.edeal.trackingserver.tools.AESCipherTools;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -15,27 +16,21 @@ public class TDTester {
 		System.out.println("Hello World!");
 
 		try {
-			String url = "/tdservices/download";
+			String url = "/tdservices/mail";
 			String host = "localhost:8080";
 
-			String key = "YnN5BFb1EZ6hD22+ZKRLEQ==";
+			String key = "uejhe064gnex8o0l4Gp2Lg==";
 
 			String fakeParam = ""
-                    + "utk=" + RandomStringUtils.randomAlphabetic(10) + "&"
-                    + "eml=" + RandomStringUtils.randomAlphabetic(16) + "&"
-                    + "wop=" + RandomStringUtils.randomAlphabetic(16) + "&"
-                    + "iblChannel=" + "WEB" + "&"
-                    + "filemd5=2be6faf9c9dcf390a281c879a72bb154a306c37c&"
-                    + "portal=WEB&"
-                    + "token=" + RandomStringUtils.randomAlphabetic(16) + "&"
-                    + "watermark=true&"
-                    + "firstname=" + RandomStringUtils.randomAlphabetic(10) + "&"
-                    + "lastname=" + RandomStringUtils.randomAlphabetic(10) + "&"
-                    + "company=" + RandomStringUtils.randomAlphabetic(10) + "&"
-                    + "healthcheck=" + "true" + "&"
-                    + "checksum=REZREZREZREZREZREZREZREZ";
-			String out = CipherTools.get().encrypt(fakeParam, key);
-            Object ori = CipherTools.get().decrypt(out, key);
+                    + "rtk=" + RandomStringUtils.randomAlphabetic(10) + "&"
+                    + "rm=" + RandomStringUtils.randomAlphabetic(16) + "&"
+                    + "rc=" + RandomStringUtils.randomAlphabetic(16) + "&"
+                    + "did=" + RandomStringUtils.randomAlphabetic(16) + "&"
+                    + "ls=" + RandomStringUtils.randomAlphabetic(16) + "&"
+
+                    ;
+			String out = AESCipherTools.get().encrypt(fakeParam, key);
+            Object ori = AESCipherTools.get().decrypt(out, key);
             String hmacSha1 = new String(HmacSha1.hash(key,out));
 
             System.out.println(out);
