@@ -22,38 +22,33 @@ public class TDTester {
 			String key = "uejhe064gnex8o0l4Gp2Lg==";
 
 			String fakeParam = ""
-                    + "rtk=" + RandomStringUtils.randomAlphabetic(10) + "&"
-                    + "rm=" + RandomStringUtils.randomAlphabetic(16) + "&"
-                    + "rc=" + RandomStringUtils.randomAlphabetic(16) + "&"
-                    + "did=" + RandomStringUtils.randomAlphabetic(16) + "&"
-                    + "ls=" + RandomStringUtils.randomAlphabetic(16) + "&"
+                    + "recipienttoken=" + RandomStringUtils.randomAlphabetic(10) + "&"
+                    + "recipientmail=" + RandomStringUtils.randomAlphabetic(16) + "&"
+                    + "recipientcookie=" + RandomStringUtils.randomAlphabetic(16) + "&"
+                    + "documentid=" + RandomStringUtils.randomAlphabetic(16) + "&"
+                    + "logstatus=" + RandomStringUtils.randomAlphabetic(16);
 
-                    ;
 			String out = AESCipherTools.get().encrypt(fakeParam, key);
-            Object ori = AESCipherTools.get().decrypt(out, key);
             String hmacSha1 = new String(HmacSha1.hash(key,out));
-
-            System.out.println(out);
-            System.out.println(hmacSha1);
 
             //first request
 			HttpClient httpClient = HttpClientBuilder.create().build();
 
 			URIBuilder builder = new URIBuilder();
 			builder.setScheme("http").setHost(host).setPath(url)
-					.setParameter("q", hmacSha1 + out)
-					.setParameter("file", "0987654321.pdf");
+					.setParameter("v", "v1")
+					.setParameter("q", hmacSha1 + out);
 			URI uri = builder.build();
             System.out.println(uri.toString());
 
-		/*	HttpGet httpGet = new HttpGet(uri);
+			HttpGet httpGet = new HttpGet(uri);
 			//parse auth challenge
 			HttpResponse firstResponse = httpClient.execute(httpGet);
 
 			for (Header temp : firstResponse.getAllHeaders())
 				System.out.println(temp.toString());
 			firstResponse.getEntity().getContent().toString();
-*/
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

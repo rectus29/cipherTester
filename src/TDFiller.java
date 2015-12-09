@@ -24,12 +24,12 @@ public class TDFiller {
 
                 String key = "YnN5BFb1EZ6hD22+ZKRLEQ==";
 
-                String str10 =  RandomStringUtils.randomAlphabetic(10);
-                String str16 =  RandomStringUtils.randomAlphabetic(16);
+                String str10 = RandomStringUtils.randomAlphabetic(10);
+                String str16 = RandomStringUtils.randomAlphabetic(16);
 
                 String fakeParam = ""
                         + "utk=" + str10 + "&"
-                        + "eml=" + str16 + "&"
+                        + "eml=" + "poilmopoik.pdf" + "&"
                         + "wop=" + str16 + "&"
                         + "iblChannel=" + "WEB" + "&"
                         + "filemd5=2c7cc5dc1831570f3120ede4ad0dfd6625c4bca4&"
@@ -38,9 +38,8 @@ public class TDFiller {
                         + "watermark=true&"
                         + "firstname=" + str10 + "&"
                         + "lastname=" + str10 + "&"
-                        + "company=" + str10 + "&"
-                        //+ "healthcheck=" + "true" + "&"
-                        + "checksum=REZREZREZREZREZREZREZREZ";
+                        + "company=" + str10;
+                //+ "healthcheck=" + "true" + "&"
                 String out = AESCipherTools.get().encrypt(fakeParam, key);
                 Object ori = AESCipherTools.get().decrypt(out, key);
                 String hmacSha1 = new String(HmacSha1.hash(key, out));
@@ -53,18 +52,18 @@ public class TDFiller {
 
                 URIBuilder builder = new URIBuilder();
                 builder.setScheme("http").setHost(host).setPath(url)
-                        .setParameter("q", hmacSha1 + out)
-                        .setParameter("file", "poilmopoik.pdf");
+                        .setParameter("v", "v1")
+                        .setParameter("q", hmacSha1 + out);
                 URI uri = builder.build();
                 System.out.println(uri.toString());
 
-			HttpGet httpGet = new HttpGet(uri);
-            //parse auth challenge
-			HttpResponse firstResponse = httpClient.execute(httpGet);
+                HttpGet httpGet = new HttpGet(uri);
+                //parse auth challenge
+                HttpResponse firstResponse = httpClient.execute(httpGet);
 
-			for (Header temp : firstResponse.getAllHeaders())
-				System.out.println(temp.toString());
-			firstResponse.getEntity().getContent().toString();
+                for (Header temp : firstResponse.getAllHeaders())
+                    System.out.println(temp.toString());
+                firstResponse.getEntity().getContent().toString();
 
             } catch (Exception e) {
                 e.printStackTrace();
