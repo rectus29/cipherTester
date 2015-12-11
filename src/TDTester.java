@@ -16,7 +16,7 @@ public class TDTester {
 		System.out.println("Hello World!");
 
 		try {
-			String url = "/tdservices/mail";
+			String url = "/tdservices/image/pic.gif";
 			String host = "localhost:8080";
 
 			String key = "uejhe064gnex8o0l4Gp2Lg==";
