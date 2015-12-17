@@ -32,7 +32,7 @@ public class AESECB {
 					+ "lastname=WEB&"
 					+ "company=WEB&"
 					+ "checksum=WEB";
-			String out = AESCipherTools.get().encrypt(fakeParam, key);
+			String out = AESCipherTools.encrypt(fakeParam, key);
 
 			//first request
 			HttpClient httpClient = HttpClientBuilder.create().build();

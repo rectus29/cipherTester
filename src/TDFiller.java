@@ -16,11 +16,9 @@ public class TDFiller {
         System.out.println("Hello World!");
 
         for (int i = 0; i < 20; i++) {
-
-
             try {
                 String url = "/tdservices/download";
-                String host = "localhost:8080";
+                String host = "localhost:8282";
 
                 String key = "YnN5BFb1EZ6hD22+ZKRLEQ==";
 
@@ -32,16 +30,13 @@ public class TDFiller {
                         + "eml=" + "64a4e8faed1a1aa0bf8bf0fc84938d25.PDF" + "&"
                         + "wop=" + str16 + "&"
                         + "iblChannel=" + "WEB" + "&"
-                        + "filemd5=2c7cc5dc1831570f3120ede4ad0dfd6625c4bca4&"
                         + "portal=WEB&"
                         + "token=" + str16 + "&"
                         + "watermark=true&"
                         + "firstname=" + str10 + "&"
                         + "lastname=" + str10 + "&"
                         + "company=" + str10;
-                //+ "healthcheck=" + "true" + "&"
-                String out = AESCipherTools.get().encrypt(fakeParam, key);
-                Object ori = AESCipherTools.get().decrypt(out, key);
+                String out = AESCipherTools.encrypt(fakeParam, key);
                 String hmacSha1 = new String(HmacSha1.hash(key, out));
 
                 System.out.println(out);
@@ -52,8 +47,7 @@ public class TDFiller {
 
                 URIBuilder builder = new URIBuilder();
                 builder.setScheme("http").setHost(host).setPath(url)
-                        .setParameter("v", "v1")
-                        .setParameter("q", hmacSha1 + out);
+                        .setParameter("q", "1" + hmacSha1 + out);
                 URI uri = builder.build();
                 System.out.println(uri.toString());
 

@@ -37,7 +37,7 @@ public class AES128 {
                         + "lastname=" + RandomStringUtils.randomAlphabetic(10) + "&"
                         + "company=BP2S&"
                         + "checksum=REZREZREZREZREZREZREZREZ";
-                System.out.println(AESCipherTools.get().encrypt(fakeParam, key));
+                System.out.println(AESCipherTools.encrypt(fakeParam, key));
             }
 
             System.out.println("start -> " + start.getTime());
