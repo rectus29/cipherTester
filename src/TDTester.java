@@ -21,10 +21,10 @@ public class TDTester {
                         + "logstatus=" + RandomStringUtils.randomAlphabetic(16);
                 String out = AESCipherTools.encrypt(fakeParam, key);
                 String hmacSha1 = new String(HmacSha1.hash(key, out));
-
                 ClientResource resource = new ClientResource(host + url);
                 resource.addQueryParameter(new Parameter("q", "1" + hmacSha1 + out));
-                resource = AESCipherTools.DigestResolution(resource);
+                System.out.println(resource.getRequest());
+                //resource = AESCipherTools.DigestResolution(resource);
                 resource.get();
             } catch (Exception e) {
                 e.printStackTrace();
