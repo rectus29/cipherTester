@@ -9,6 +9,7 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.net.URI;
+import java.net.URLEncoder;
 
 public class TDFiller {
 
@@ -17,8 +18,8 @@ public class TDFiller {
 
         for (int i = 0; i < 20; i++) {
             try {
-                String url = "/tdservices/download";
-                String host = "localhost:8282";
+                String url = "tdservices/download";
+                String host = "http://192.168.1.81:8080/";
 
                 String key = "YnN5BFb1EZ6hD22+ZKRLEQ==";
 
@@ -27,7 +28,7 @@ public class TDFiller {
 
                 String fakeParam = ""
                         + "utk=" + str10 + "&"
-                        + "eml=" + "64a4e8faed1a1aa0bf8bf0fc84938d25.PDF" + "&"
+                        + "eml=" + "test.pdf" + "&"
                         + "wop=" + str16 + "&"
                         + "iblChannel=" + "WEB" + "&"
                         + "portal=WEB&"
@@ -45,7 +46,8 @@ public class TDFiller {
                 //first request
                 HttpClient httpClient = HttpClientBuilder.create().build();
 
-                URIBuilder builder = new URIBuilder();
+                System.out.println(host + url + "?q=" + URLEncoder.encode("1" + hmacSha1 + out));
+   /*             URIBuilder builder = new URIBuilder();
                 builder.setScheme("http").setHost(host).setPath(url)
                         .setParameter("q", "1" + hmacSha1 + out);
                 URI uri = builder.build();
@@ -58,7 +60,7 @@ public class TDFiller {
                 for (Header temp : firstResponse.getAllHeaders())
                     System.out.println(temp.toString());
                 firstResponse.getEntity().getContent().toString();
-
+*/
             } catch (Exception e) {
                 e.printStackTrace();
             }
