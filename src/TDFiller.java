@@ -19,7 +19,7 @@ public class TDFiller {
         for (int i = 0; i < 20; i++) {
             try {
                 String url = "tdservices/download";
-                String host = "http://192.168.1.81:8080/";
+                String host = "http://127.0.0.1:8080/";
 
                 String key = "YnN5BFb1EZ6hD22+ZKRLEQ==";
 
