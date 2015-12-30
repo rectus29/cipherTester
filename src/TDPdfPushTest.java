@@ -1,3 +1,4 @@
+import com.edeal.trackingserver.tools.AESCipherTools;
 import org.restlet.data.MediaType;
 import org.restlet.data.Parameter;
 import org.restlet.ext.html.FormData;
@@ -14,7 +15,7 @@ public class TDPdfPushTest {
         System.out.println("Hello World!");
 
         try {
-            String urlString = "/tdservices/storepdf";
+            String urlString = "/internal/storepdf";
             String host = "http://localhost:8080";
 
             // takes file path from first program's argument
@@ -25,12 +26,10 @@ public class TDPdfPushTest {
             multipartFormData.setMultipart(true);
             Representation fileRepresentation = new FileRepresentation(uploadFile, MediaType.valueOf(new MimetypesFileTypeMap().getContentType(uploadFile)));
             multipartFormData.getEntries().add(new FormData("file", fileRepresentation));
-            //multipartFormData.getEntries().add(new FormData("documentID", "plop"));
-            //multipartFormData.getEntries().add(new FormData("documentChkSum", "plop"));
-            ClientResource testPostFiles = new ClientResource(host + urlString);
-            testPostFiles.addQueryParameter(new Parameter("documentID", "plop"));
-            testPostFiles.addQueryParameter(new Parameter("documentChkSum", "9d82d27dd12c6f3f177ee4d05ad19670bf073afc"));
-            testPostFiles.post(multipartFormData);
+			ClientResource testPostFiles = AESCipherTools.DigestResolution(new ClientResource(host + urlString));
+			testPostFiles.addQueryParameter(new Parameter("documentID", "plop"));
+			testPostFiles.addQueryParameter(new Parameter("documentChkSum", "9d82d27dd12c6f3f177ee4d05ad19670bf073afc"));
+			testPostFiles.post(multipartFormData);
 
 
         } catch (Exception e) {

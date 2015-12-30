@@ -121,6 +121,11 @@
             <artifactId>org.restlet.ext.httpclient</artifactId>
             <version>${restlet.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.shiro.tools</groupId>
+            <artifactId>shiro-tools-hasher</artifactId>
+            <version>1.2.4</version>
+        </dependency>
 
     </dependencies>
 

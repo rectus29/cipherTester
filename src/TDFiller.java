@@ -1,14 +1,9 @@
 import com.edeal.trackingserver.tools.AESCipherTools;
 import com.edeal.trackingserver.tools.HmacSha1;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-import java.net.URI;
 import java.net.URLEncoder;
 
 public class TDFiller {
@@ -18,7 +13,7 @@ public class TDFiller {
 
         for (int i = 0; i < 20; i++) {
             try {
-                String url = "tdservices/download";
+                String url = "internal/download";
                 String host = "http://127.0.0.1:8080/";
 
                 String key = "YnN5BFb1EZ6hD22+ZKRLEQ==";
@@ -28,7 +23,7 @@ public class TDFiller {
 
                 String fakeParam = ""
                         + "utk=" + str10 + "&"
-                        + "eml=" + "test.pdf" + "&"
+                        + "eml=" + "MORNING1234.pdf" + "&"
                         + "wop=" + str16 + "&"
                         + "iblChannel=" + "WEB" + "&"
                         + "portal=WEB&"
