@@ -14,10 +14,10 @@ public class TDTester {
                 String host = "http://192.168.1.59:8080/";
                 String key = "uejhe064gnex8o0l4Gp2Lg==";
                 String fakeParam = ""
-                        + "recipienttoken=" + RandomStringUtils.randomAlphabetic(8) + "&"
+                        + "recipienttoken=" + "002d670a" + "&"
                         + "recipientmail=" + "jojo@jojo.jojo" + "&"
-                        + "recipientcookie=" + RandomStringUtils.randomAlphabetic(16) + "&"
-                        + "documentid=" + RandomStringUtils.randomAlphabetic(16) + "&"
+                        + "recipientcookie=" + RandomStringUtils.randomAlphabetic(8) + "&"
+                        + "documentid=" + "0000000000577a03" + "&"
                         + "logstatus=" + RandomStringUtils.randomAlphabetic(16);
                 String out = AESCipherTools.encrypt(fakeParam, key);
                 String hmacSha1 = new String(HmacSha1.hash(key, out));
