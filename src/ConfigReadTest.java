@@ -12,7 +12,7 @@ import org.restlet.resource.ClientResource;
 /*                Date: 23/12/2015 17:12                */
 /*                 All right reserved                  */
 /*-----------------------------------------------------*/
-public class ConfigPushTest {
+public class ConfigReadTest {
 
 
 	public static void main(String[] parameters) {
@@ -21,12 +21,12 @@ public class ConfigPushTest {
 		 String host="http://127.0.0.1:8080/";
 		 String login="edeal";
 		String password="7e32fc4e4e747e6eef2c8215613d61f7";
-		String url="tdservices/watermark_config";
+		String url="internal/get_watermark_config";
 
 		ClientResource resource = new ClientResource(host + url);
-		//	resource = 	AESCipherTools.DigestResolution(resource);
+			resource = 	tools.DigestResolution(resource);
 			Representation responseRep = resource.post(resource);
-
+			System.out.println(responseRep.getText());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

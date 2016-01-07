@@ -10,12 +10,12 @@ public class TDTester {
 
         for (int i = 0; i < 20; i++) {
             try {
-                String url = "tdservices/open/pic.gif";
-                String host = "http://192.168.1.81:8080/";
+                String url = "external/open/pic.gif";
+                String host = "http://192.168.1.59:8080/";
                 String key = "uejhe064gnex8o0l4Gp2Lg==";
                 String fakeParam = ""
-                        + "recipienttoken=" + RandomStringUtils.randomAlphabetic(10) + "&"
-                        + "recipientmail=" + RandomStringUtils.randomAlphabetic(16) + "&"
+                        + "recipienttoken=" + RandomStringUtils.randomAlphabetic(8) + "&"
+                        + "recipientmail=" + "jojo@jojo.jojo" + "&"
                         + "recipientcookie=" + RandomStringUtils.randomAlphabetic(16) + "&"
                         + "documentid=" + RandomStringUtils.randomAlphabetic(16) + "&"
                         + "logstatus=" + RandomStringUtils.randomAlphabetic(16);
@@ -24,7 +24,7 @@ public class TDTester {
                 ClientResource resource = new ClientResource(host + url);
                 resource.addQueryParameter(new Parameter("q", "1" + hmacSha1 + out));
                 System.out.println(resource.getRequest());
-                //resource = AESCipherTools.DigestResolution(resource);
+                ///resource = AESCipherTools.DigestResolution(resource);
                 //resource.get();
             } catch (Exception e) {
                 e.printStackTrace();

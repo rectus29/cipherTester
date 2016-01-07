@@ -1,11 +1,8 @@
-import com.edeal.trackingserver.tools.AESCipherTools;
 import org.restlet.data.MediaType;
-import org.restlet.data.Parameter;
 import org.restlet.ext.html.FormData;
 import org.restlet.ext.html.FormDataSet;
 import org.restlet.representation.FileRepresentation;
 import org.restlet.representation.Representation;
-import org.restlet.resource.ClientResource;
 
 import javax.activation.MimetypesFileTypeMap;
 import java.io.File;
@@ -26,11 +23,11 @@ public class TDPdfPushTest {
             multipartFormData.setMultipart(true);
             Representation fileRepresentation = new FileRepresentation(uploadFile, MediaType.valueOf(new MimetypesFileTypeMap().getContentType(uploadFile)));
             multipartFormData.getEntries().add(new FormData("file", fileRepresentation));
-			ClientResource testPostFiles = AESCipherTools.DigestResolution(new ClientResource(host + urlString));
+			/*ClientResource testPostFiles = AESCipherTools.DigestResolution(new ClientResource(host + urlString));
 			testPostFiles.addQueryParameter(new Parameter("documentID", "plop"));
 			testPostFiles.addQueryParameter(new Parameter("documentChkSum", "9d82d27dd12c6f3f177ee4d05ad19670bf073afc"));
 			testPostFiles.post(multipartFormData);
-
+*/
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -23,6 +23,11 @@
         <spring.version>4.2.2.RELEASE</spring.version>
     </properties>
 
+
+    <build>
+        <outputDirectory>target/classes2</outputDirectory>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>com.edeal.frontline</groupId>
