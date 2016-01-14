@@ -1,4 +1,3 @@
-import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 
 /*-----------------------------------------------------*/
@@ -14,24 +13,19 @@ import org.restlet.resource.ClientResource;
 /*-----------------------------------------------------*/
 public class ConfigReadTest {
 
-
 	public static void main(String[] parameters) {
 
 		try {
-		 String host="http://127.0.0.1:8080/";
-		 String login="edeal";
-		String password="7e32fc4e4e747e6eef2c8215613d61f7";
-		String url="internal/get_watermark_config";
+			String host = "http://127.0.0.1:8080/";
+			String url = "internal/get_watermark_config";
 
-		ClientResource resource = new ClientResource(host + url);
-			resource = 	tools.DigestResolution(resource);
-			Representation responseRep = resource.post(resource);
-			System.out.println(responseRep.getText());
+			ClientResource resource = new ClientResource(host + url);
+			resource = tools.DigestResolution(resource);
+			resource.get();
+			System.out.println(resource.getResponse().getEntityAsText());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
-
 
 }

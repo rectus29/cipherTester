@@ -7,9 +7,6 @@ import java.security.Security;
 
 public class cipher {
 
-	private static SecretKey key = null;
-	private static Cipher cipher = null;
-
 	public static void main(String[] args) throws Exception {
 
 		Security.addProvider(new com.sun.crypto.provider.SunJCE());
@@ -18,7 +15,7 @@ public class cipher {
 		KeyGenerator.getInstance("DESede");
 		keyGenerator.init(112);
 		SecretKey secretKey = keyGenerator.generateKey();
-		cipher = Cipher.getInstance("DESede");
+		Cipher cipher = Cipher.getInstance("DESede");
 
 		String clearText = "I am an Employee";
 		byte[] clearTextBytes = clearText.getBytes("UTF8");

@@ -1,4 +1,3 @@
-import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 
 /*-----------------------------------------------------*/
@@ -14,24 +13,20 @@ import org.restlet.resource.ClientResource;
 /*-----------------------------------------------------*/
 public class ConfigPushTest {
 
-
 	public static void main(String[] parameters) {
 
 		try {
-		 String host="http://127.0.0.1:8080/";
-		 String login="edeal";
-		String password="7e32fc4e4e747e6eef2c8215613d61f7";
-		String url="tdservices/watermark_config";
+			String host = "http://127.0.0.1:8080/";
+			String url = "internal/watermark_config";
 
-		ClientResource resource = new ClientResource(host + url);
-		//	resource = 	AESCipherTools.DigestResolution(resource);
-			Representation responseRep = resource.post(resource);
+			ClientResource resource = new ClientResource(host + url);
+			resource.addQueryParameter("config", "{\"stampPolicy\":\"ALL\",\"font\":\"HELVETICA\",\"fontSize\":10.0,\"templateSupportedKeywords\":[\"firstname\",\"lastname\",\"company\"],\"template\":\"Document downloaded by $$firstname$$ $$lastname$$ ($$company$$)\",\"color\":\"lightGray\",\"stampPosX\":{\"positionPolicy\":\"WIDTH_CENTERED\",\"value\":10.0},\"stampPosY\":{\"positionPolicy\":\"HEIGHT_FROM_BOTTOM\",\"value\":10.0}}");
+			resource = tools.DigestResolution(resource);
+			resource.get();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
-
 
 }
