@@ -1,10 +1,7 @@
 import com.edeal.trackingserver.tools.AESCipherTools;
 import com.edeal.trackingserver.tools.HmacSha1;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.net.URLEncoder;
@@ -16,7 +13,7 @@ public class TDFiller {
 
         for (int i = 0; i < 20; i++) {
             try {
-                String url = "external/download";
+                String url = "tdclient/external/download";
                 String host = "http://127.0.0.1:8080/";
 
                 String key = "YnN5BFb1EZ6hD22+ZKRLEQ==";
@@ -28,11 +25,12 @@ public class TDFiller {
                 String fakeParam = ""
                         + "utk=" + str8 + "&"
                         + "eml=" + "MORNING1234.pdf" + "&"
+                        //+ "eml=" + "theorique-m-d5f705498b8665c7184cd3936f90a302.png" + "&"
                         + "wop=" + str16 + "&"
                         + "iblChannel=" + "WEB" + "&"
                         + "portal=WEB&"
                         + "token=" + str16 + "&"
-                        + "watermark=true&"
+                        + "watermark&"
                         + "firstname=" + str10 + "&"
                         + "lastname=" + str10 + "&"
                         + "company=" + str10;
@@ -52,14 +50,14 @@ public class TDFiller {
                 URI uri = builder.build();
                 System.out.println(uri.toString());
 */
-                HttpGet httpGet = new HttpGet(host + url + "?q=" + URLEncoder.encode("1" + hmacSha1 + out));
+             /*   HttpGet httpGet = new HttpGet(host + url + "?q=" + URLEncoder.encode("1" + hmacSha1 + out));
                 //parse auth challenge
                 HttpResponse firstResponse = httpClient.execute(httpGet);
 
                 for (Header temp : firstResponse.getAllHeaders())
                     System.out.println(temp.toString());
                 firstResponse.getEntity().getContent().toString();
-
+*/
             } catch (Exception e) {
                 e.printStackTrace();
             }
