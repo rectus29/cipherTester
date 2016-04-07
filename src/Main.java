@@ -1,3 +1,11 @@
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.restlet.data.Method;
+import org.restlet.data.Parameter;
+import org.restlet.representation.Representation;
+import org.restlet.representation.StringRepresentation;
+import org.restlet.resource.ClientResource;
+
 import java.util.Date;
 
 public class Main {
@@ -11,6 +19,38 @@ public class Main {
 		Date date1 = new Date();
 		date1.setTime(date);
 		System.out.println(date1);
+
+
+		try {
+			String host = "http://rd4vm-apache-owasp/edealcrm/read_enterprise.fl";
+			//String host = "http://192.168.1.166/edealcrm/read_enterprise.fl";
+
+			/*FormDataSet multipartFormData = new FormDataSet();
+			multipartFormData.setMultipart(true);
+			Representation fileRepresentation = new FileRepresentation(uploadFile, MediaType.valueOf(new MimetypesFileTypeMap().getContentType(uploadFile)));
+			multipartFormData.getEntries().add(new FormData("file", fileRepresentation));*/
+
+
+			JSONObject obj = new JSONObject();
+			try {
+				obj.put("partId", "23");
+				obj.put("carId", "34");
+				obj.put("name", "chassis");
+				obj.put("section", "frame");
+			} catch (JSONException e1) {}
+			ClientResource testPostFiles = new ClientResource(host);
+			testPostFiles.setMethod(Method.POST);
+			//testPostFiles.setAttribute("Content-Type", "plop");
+			StringRepresentation stringRep = new StringRepresentation(obj.toString());
+		//	stringRep.setMediaType(MediaType.TEXT_HTML);
+
+			testPostFiles.addQueryParameter(new Parameter("documentID", obj.toString()));
+			Representation tete = testPostFiles.post(stringRep);
+			System.out.println(testPostFiles.getStatus());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 
 //        try {
