@@ -11,7 +11,7 @@ public class TDTester {
         for (int i = 0; i < 20; i++) {
             try {
                 String url = "external/open/pic.gif";
-                String host = "http://127.0.0.1:8080/";
+                String host = "http://127.0.0.1:8081/";
                 String key = "uejhe064gnex8o0l4Gp2Lg==";
                 String fakeParam = ""
                         + "recipienttoken=" + "002d670a" + "&"

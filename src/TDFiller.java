@@ -1,8 +1,5 @@
 import com.edeal.trackingserver.tools.AESCipherTools;
 import com.edeal.trackingserver.tools.HmacSha1;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.net.URLEncoder;
 
@@ -11,16 +8,16 @@ public class TDFiller {
     public static void main(String[] args) {
         System.out.println("Hello World!");
 
-        for (int i = 0; i < 20; i++) {
+        //for (int i = 0; i < 20; i++) {
             try {
                 String url = "tdclient/external/download";
                 String host = "http://127.0.0.1:8081/";
 
                 String key = "znWxSX8JszSEPESYs67wtg==";
 
-                String str8 = RandomStringUtils.randomAlphabetic(8);
-                String str10 = RandomStringUtils.randomAlphabetic(10);
-                String str16 = RandomStringUtils.randomAlphabetic(16);
+                String str8 = "aaaaaaaa";//RandomStringUtils.randomAlphabetic(8);
+                String str10 = "aaaaaaaaaa";//RandomStringUtils.randomAlphabetic(10);
+                String str16 = "aaaaaaaaaaaaaa";//RandomStringUtils.randomAlphabetic(16);
 
                 String fakeParam = ""
                         + "utk=" + str8 + "&"
@@ -38,14 +35,15 @@ public class TDFiller {
 				String out = AESCipherTools.encrypt(fakeParam, key);
                 String hmacSha1 = new String(HmacSha1.hash(key, out));
 
-                System.out.println(out);
-                System.out.println(hmacSha1);
+				System.out.println(hmacSha1);
+				System.out.println(out);
 
                 //first request
-                HttpClient httpClient = HttpClientBuilder.create().build();
+                //HttpClient httpClient = HttpClientBuilder.create().build();
 
                 System.out.println(host + url + "?q=" + URLEncoder.encode("1" + hmacSha1 + out, "UTF-8"));
 
+				AESCipherTools.decrypt(out, key);
 
 				//byte[] out =  new BaseDecryptor().process(hmacSha1 + out);
    /*             URIBuilder builder = new URIBuilder();
@@ -66,7 +64,7 @@ public class TDFiller {
                 e.printStackTrace();
             }
 
-        }
+        //}
     }
 
 }
