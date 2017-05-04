@@ -10,9 +10,9 @@ public class TDTester {
 
         for (int i = 0; i < 20; i++) {
             try {
-                String url = "external/open/pic.gif";
-                String host = "http://127.0.0.1:8081/";
-                String key = "uejhe064gnex8o0l4Gp2Lg==";
+                String url = "tdclient/external/open/pic.gif";
+                String host = "http://127.0.0.1:8080/";
+                String key = "znWxSX8JszSEPESYs67wtg==";
                 String fakeParam = ""
                         + "recipienttoken=" + "002d670a" + "&"
                         + "recipientmail=" + "jojo@jojo.jojo" + "&"
